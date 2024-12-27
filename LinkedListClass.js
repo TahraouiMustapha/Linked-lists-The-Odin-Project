@@ -87,6 +87,17 @@ function createLinkedList() {
         return null;
     }
 
+    const toString = () => {
+        let myLinkedList = '';
+        let node = head;
+        while(node != null) {
+            myLinkedList += `(${node.value}) -> `
+            node = node.nextNode;
+        }
+        myLinkedList += `null`;
+        return myLinkedList
+    }   
+
     return {
         append,
         prepend,
@@ -96,7 +107,8 @@ function createLinkedList() {
         at,
         pop,
         contains,
-        find
+        find,
+        toString
     };
 }
 
@@ -108,6 +120,8 @@ myList.append(3);
 
 const head = myList.getHeadList();
 console.log(myList.find(0));
+
+console.log(myList.toString())
 
 
 

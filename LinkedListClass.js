@@ -98,6 +98,28 @@ function createLinkedList() {
         return myLinkedList
     }   
 
+    const insertAt = (value, index) => {
+        if(index == 0) {
+            prepend(value);
+            return;
+        } else {
+            let node = head ;
+            const newNode = createNode();
+            newNode.value = value;
+            while(node != null) {
+                if(index == 1) {
+                    newNode.nextNode = node.nextNode;
+                    node.nextNode = newNode;
+                    return;
+                }
+                node = node.nextNode;
+                index -= 1;
+            }
+            // if the index is bigger than size
+            append(value);
+        }
+    }
+
     return {
         append,
         prepend,
@@ -108,7 +130,8 @@ function createLinkedList() {
         pop,
         contains,
         find,
-        toString
+        toString,
+        insertAt
     };
 }
 
@@ -123,6 +146,8 @@ console.log(myList.find(0));
 
 console.log(myList.toString())
 
+myList.insertAt(54, 0);
+console.log(myList.toString())
 
 
 export { createLinkedList };

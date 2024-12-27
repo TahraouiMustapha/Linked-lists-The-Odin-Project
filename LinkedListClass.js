@@ -67,6 +67,26 @@ function createLinkedList() {
         tail = node;
     }
 
+    const contains = (value) => {
+        let node = head;
+        while (node != null) {
+            if(node.value == value) return true;
+            node = node.nextNode;
+        }
+        return false;
+    }
+
+    const find = (value) => {
+        let node = head;
+        let index = 0;
+        while (node != null) {
+            if(node.value == value) return index;
+            node = node.nextNode;
+            index += 1;
+        }
+        return null;
+    }
+
     return {
         append,
         prepend,
@@ -74,7 +94,9 @@ function createLinkedList() {
         getTailList,
         size,
         at,
-        pop
+        pop,
+        contains,
+        find
     };
 }
 
@@ -85,9 +107,8 @@ myList.append(2);
 myList.append(3);
 
 const head = myList.getHeadList();
-console.log(head.value);
+console.log(myList.find(0));
 
-let something = myList.at(2);
-console.log('some:'+ something.value)
+
 
 export { createLinkedList };

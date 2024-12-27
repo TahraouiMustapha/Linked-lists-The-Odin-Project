@@ -7,6 +7,9 @@ function createLinkedList() {
     let head = null;
     let tail = null;
 
+    const getHeadList = () => head;
+    const getTailList = () => tail;
+
     function append(value) {
         const newNode = createNode();
         newNode.value = value;
@@ -21,19 +24,20 @@ function createLinkedList() {
         }
     }
 
-    const getHeadValue = () => head? head.value : null; 
+
+
 
 
     return {
         append,
-        getHeadValue,
+        getHeadList,
+        getTailList
     };
 }
 
-const myList = createLinkedList();
 
-myList.append(1);
-console.log(myList.getHeadValue())
+
+
 
 
 export { createLinkedList };

@@ -58,7 +58,10 @@ function createLinkedList() {
     }
 
     const pop = () => {
-        if(head == null) return "the list is empty";
+        if(head == null) {
+            console.log("the list is empty!");
+            return;
+        }
         let node = head;
         while(node.nextNode != tail) {
             node = node.nextNode; 
@@ -153,26 +156,5 @@ function createLinkedList() {
         removeAt
     };
 }
-
-
-const myList = createLinkedList();
-myList.append(0);
-myList.append(2);
-myList.append(3);
-myList.append(7);
-
-
-
-console.log(myList.toString())
-myList.insertAt(54, 0);
-console.log(myList.toString())
-
-myList.removeAt(0);
-console.log(myList.toString())
-myList.removeAt(2);
-console.log(myList.toString())
-myList.removeAt(10);
-console.log(myList.toString())
-
 
 export { createLinkedList };

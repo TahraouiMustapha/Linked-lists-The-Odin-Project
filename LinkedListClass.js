@@ -46,13 +46,24 @@ function createLinkedList() {
         return count;
     }
 
+    const at = (index) => {
+        let node = head;
+        while (node != null) {
+            if(index == 0) return node;
+            node = node.nextNode;
+            index -= 1;
+        }
+
+        return null;
+    }
 
     return {
         append,
         prepend,
         getHeadList,
         getTailList,
-        size
+        size,
+        at
     };
 }
 
@@ -65,7 +76,7 @@ myList.append(3);
 const head = myList.getHeadList();
 console.log(head.value);
 
-console.log(myList.size());
-
+const something = myList.at(7);
+console.log('some:'+ something)
 
 export { createLinkedList };

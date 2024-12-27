@@ -101,7 +101,6 @@ function createLinkedList() {
     const insertAt = (value, index) => {
         if(index == 0) {
             prepend(value);
-            return;
         } else {
             let node = head ;
             const newNode = createNode();
@@ -120,6 +119,25 @@ function createLinkedList() {
         }
     }
 
+    const removeAt = (index) => {
+        if(index == 0) {
+            head = head.nextNode;
+        } else {
+            let node = head;
+            while(node != null) {
+                if(index == 1) {
+                    let removedNode = node.nextNode;
+                    node.nextNode = removedNode.nextNode;
+                    return;
+                } 
+                node = node.nextNode;
+                index -= 1;
+            }
+            // if the index is bigger than the size
+            console.log( "the index is bigger than the size");
+        }
+    }
+
     return {
         append,
         prepend,
@@ -131,7 +149,8 @@ function createLinkedList() {
         contains,
         find,
         toString,
-        insertAt
+        insertAt,
+        removeAt
     };
 }
 
@@ -140,13 +159,19 @@ const myList = createLinkedList();
 myList.append(0);
 myList.append(2);
 myList.append(3);
+myList.append(7);
 
-const head = myList.getHeadList();
-console.log(myList.find(0));
+
 
 console.log(myList.toString())
-
 myList.insertAt(54, 0);
+console.log(myList.toString())
+
+myList.removeAt(0);
+console.log(myList.toString())
+myList.removeAt(2);
+console.log(myList.toString())
+myList.removeAt(10);
 console.log(myList.toString())
 
 

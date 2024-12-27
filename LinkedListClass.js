@@ -57,13 +57,24 @@ function createLinkedList() {
         return null;
     }
 
+    const pop = () => {
+        if(head == null) return "the list is empty";
+        let node = head;
+        while(node.nextNode != tail) {
+            node = node.nextNode; 
+        }
+        node.nextNode = null;
+        tail = node;
+    }
+
     return {
         append,
         prepend,
         getHeadList,
         getTailList,
         size,
-        at
+        at,
+        pop
     };
 }
 
@@ -76,7 +87,7 @@ myList.append(3);
 const head = myList.getHeadList();
 console.log(head.value);
 
-const something = myList.at(7);
-console.log('some:'+ something)
+let something = myList.at(2);
+console.log('some:'+ something.value)
 
 export { createLinkedList };
